@@ -25,6 +25,7 @@ Partial Class PatternMatrixBuilder
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.ProcessButton = New System.Windows.Forms.Button()
         Me.CancelButtonControl = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -32,35 +33,46 @@ Partial Class PatternMatrixBuilder
         Me.TextBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox1.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(13, 13)
+        Me.TextBox1.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox1.Location = New System.Drawing.Point(13, 27)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox1.Size = New System.Drawing.Size(630, 321)
+        Me.TextBox1.Size = New System.Drawing.Size(630, 307)
         Me.TextBox1.TabIndex = 0
         '
         'ProcessButton
         '
         Me.ProcessButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ProcessButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ProcessButton.Location = New System.Drawing.Point(568, 340)
+        Me.ProcessButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProcessButton.Location = New System.Drawing.Point(525, 340)
         Me.ProcessButton.Name = "ProcessButton"
-        Me.ProcessButton.Size = New System.Drawing.Size(75, 23)
+        Me.ProcessButton.Size = New System.Drawing.Size(118, 23)
         Me.ProcessButton.TabIndex = 1
-        Me.ProcessButton.Text = "Process "
+        Me.ProcessButton.Text = "Create Diagram"
         Me.ProcessButton.UseVisualStyleBackColor = True
         '
         'CancelButtonControl
         '
         Me.CancelButtonControl.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CancelButtonControl.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.CancelButtonControl.Location = New System.Drawing.Point(487, 340)
+        Me.CancelButtonControl.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CancelButtonControl.Location = New System.Drawing.Point(444, 340)
         Me.CancelButtonControl.Name = "CancelButtonControl"
         Me.CancelButtonControl.Size = New System.Drawing.Size(75, 23)
         Me.CancelButtonControl.TabIndex = 2
         Me.CancelButtonControl.Text = "Cancel"
         Me.CancelButtonControl.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(12, 9)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(387, 15)
+        Me.Label1.TabIndex = 3
+        Me.Label1.Text = "Paste the copied data from your SPSS pattern matrix in the box below."
         '
         'PatternMatrixBuilder
         '
@@ -70,6 +82,7 @@ Partial Class PatternMatrixBuilder
         Me.CancelButton = Me.CancelButtonControl
         Me.ClientSize = New System.Drawing.Size(655, 375)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.CancelButtonControl)
         Me.Controls.Add(Me.ProcessButton)
         Me.Controls.Add(Me.TextBox1)
@@ -85,4 +98,5 @@ Partial Class PatternMatrixBuilder
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents ProcessButton As System.Windows.Forms.Button
     Friend WithEvents CancelButtonControl As System.Windows.Forms.Button
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class
