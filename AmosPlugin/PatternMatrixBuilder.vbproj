@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1EBB276D-576B-41FE-B96E-9C977D0BC5A7}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>AmosPlugin</RootNamespace>
-    <AssemblyName>AmosPlugin</AssemblyName>
+    <RootNamespace>PatternMatrixBuilder</RootNamespace>
+    <AssemblyName>PatternMatrixBuilder</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -19,7 +19,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>AmosPlugin.xml</DocumentationFile>
+    <DocumentationFile>PatternMatrixBuilder.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
@@ -29,7 +29,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>AmosPlugin.xml</DocumentationFile>
+    <DocumentationFile>PatternMatrixBuilder.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -45,9 +45,18 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AmosDebug">
+      <HintPath>..\..\..\..\..\Program Files (x86)\IBM\SPSS\Amos\21\AmosDebug.dll</HintPath>
+    </Reference>
+    <Reference Include="AmosEngineLib, Version=2.2.4583.17921, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="AmosGraphics">
       <HintPath>..\..\..\..\..\Program Files (x86)\IBM\SPSS\Amos\21\AmosGraphics.dll</HintPath>
     </Reference>
+    <Reference Include="MiscAmosTypes">
+      <HintPath>..\..\..\..\..\Program Files (x86)\IBM\SPSS\Amos\21\MiscAmosTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -69,6 +78,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factor.vb" />
+    <Compile Include="Item.vb" />
     <Compile Include="PatternMatrixBuilder.Designer.vb">
       <DependentUpon>PatternMatrixBuilder.vb</DependentUpon>
     </Compile>
