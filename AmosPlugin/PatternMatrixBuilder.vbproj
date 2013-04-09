@@ -10,7 +10,7 @@
     <AssemblyName>PatternMatrixBuilder</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -45,26 +45,23 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AmosDebug">
-      <HintPath>..\..\..\..\..\Program Files (x86)\IBM\SPSS\Amos\21\AmosDebug.dll</HintPath>
+    <Reference Include="AmosEngineLib, Version=2.2.4583.17921, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\IBM\SPSS\Amos\20\AmosEngineLib.dll</HintPath>
     </Reference>
-    <Reference Include="AmosEngineLib, Version=2.2.4583.17921, Culture=neutral, PublicKeyToken=null" />
-    <Reference Include="AmosGraphics">
-      <HintPath>..\..\..\..\..\Program Files (x86)\IBM\SPSS\Amos\21\AmosGraphics.dll</HintPath>
+    <Reference Include="AmosGraphics, Version=4.4.4583.17929, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\IBM\SPSS\Amos\20\AmosGraphics.dll</HintPath>
     </Reference>
-    <Reference Include="MiscAmosTypes">
-      <HintPath>..\..\..\..\..\Program Files (x86)\IBM\SPSS\Amos\21\MiscAmosTypes.dll</HintPath>
+    <Reference Include="MiscAmosTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\IBM\SPSS\Amos\20\MiscAmosTypes.dll</HintPath>
     </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -73,9 +70,6 @@
     <Import Include="System.Collections.Generic" />
     <Import Include="System.Data" />
     <Import Include="System.Diagnostics" />
-    <Import Include="System.Linq" />
-    <Import Include="System.Xml.Linq" />
-    <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Factor.vb" />

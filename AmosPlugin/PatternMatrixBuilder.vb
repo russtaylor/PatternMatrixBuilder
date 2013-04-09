@@ -16,7 +16,7 @@ Public Class PatternMatrixBuilder
     End Sub
 
     Private Sub ProcessButton_Click(sender As Object, e As EventArgs) Handles ProcessButton.Click
-        If String.IsNullOrWhiteSpace(Me.MatrixInput.Text()) Then
+        If IsNullOrWhiteSpace(Me.MatrixInput.Text()) Then
             MsgBox("Please paste your matrix into the box.")
             Return
         End If
