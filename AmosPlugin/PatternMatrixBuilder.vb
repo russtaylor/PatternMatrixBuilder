@@ -54,6 +54,18 @@ Public Class PatternMatrixBuilder
         Me.Close()
     End Sub
 
+    Private Function IsNullOrWhiteSpace(inputString As String)
+        If String.IsNullOrEmpty(inputString) Then
+            Return True
+        End If
+
+        If inputString.Trim().Length = 0 Then
+            Return True
+        End If
+
+        Return False
+    End Function
+
     Private Sub ParseData(inputPath As String, matrixInput As String)
         ' It's necessary to encapsulate the inputData into a StringReader so that the 
         ' TextFieldParser will recognize it.
@@ -92,7 +104,7 @@ Public Class PatternMatrixBuilder
                         Dim maxLoading As Double = 0
                         Dim maxLoadingIndex As Integer
                         For i = 1 To currentRow.Length - 1
-                            If Not (String.IsNullOrWhiteSpace(currentRow(i))) Then
+                            If Not (IsNullOrWhiteSpace(currentRow(i))) Then
                                 If currentRow(i) > maxLoading Then
                                     maxLoadingIndex = i
                                     maxLoading = currentRow(i)
@@ -140,7 +152,7 @@ Public Class PatternMatrixBuilder
     Private Sub linkData(inputPath As String)
         Dim amosEngine As New AmosEngineLib.AmosEngine
 
-        If Not (String.IsNullOrWhiteSpace(inputPath)) Then
+        If Not (IsNullOrWhiteSpace(inputPath)) Then
             pd.SetDataFile(1, MiscAmosTypes.cDatabaseFormat.mmSPSS, inputPath, "", "", 0)
         End If
 
@@ -189,10 +201,10 @@ Public Class PatternMatrixBuilder
         ' Check if the row has variables in every row (except the first)
         Dim arraySize = checkRow.Length - 1
         For index As Integer = 0 To arraySize
-            If index = 0 And String.IsNullOrWhiteSpace(checkRow(index)) = False Then
+            If index = 0 And IsNullOrWhiteSpace(checkRow(index)) = False Then
                 Return False
             End If
-            If index <> 0 And String.IsNullOrWhiteSpace(checkRow(index)) Then
+            If index <> 0 And IsNullOrWhiteSpace(checkRow(index)) Then
                 Return False
             End If
         Next index
@@ -261,9 +273,5 @@ Public Class PatternMatrixBuilder
         End If
         pd.DiagramRedrawDiagram()
         pd.UndoResume()
-    End Sub
-
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
-
     End Sub
 End Class
