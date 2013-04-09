@@ -10,6 +10,8 @@ Public Class PatternMatrixBuilder
     Private Property items As List(Of Item) = New List(Of Item)
     Private Property pageWidth As Double = pd.PageWidth
     Private Property pageHeight As Double = pd.PageHeight
+    Private Property verticalSeparation As Double
+    Private Property fontSize As Double
 
     Private Sub InputDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -135,16 +137,27 @@ Public Class PatternMatrixBuilder
     End Sub
 
     Private Sub CreateUnobservedVarsFromFactors()
-        Dim verticalSeparation As Double = pageHeight / factors.Count
+        verticalSeparation = (pageHeight - 72) / (items.Count + factors.Count - 1)
+        fontSize = verticalSeparation / 2
         Dim horizontalPosition As Double = pageWidth * 0.5
+
+        ' Start the spacing half an inch below the top of the page
+        Dim vPos As Double = 72 / 2
 
         ' Draw each variable
         For index As Integer = 0 To factors.Count - 1
-            Dim verticalPosition As Double = verticalSeparation * index + verticalSeparation * 0.5
+            Dim verticalPosition As Double = (verticalSeparation * factors(index).linkedItems.Count) / 2 + vPos
             Dim unobservedElement = pd.DiagramDrawUnobserved(horizontalPosition,
                                                          verticalPosition, 0.5, 0.7)
             unobservedElement.NameOrCaption = factors(index).Name
             factors(index).pdElement = unobservedElement
+            unobservedElement.Width = 72
+            unobservedElement.Height = 45
+
+            unobservedElement.NameFontSize = fontSize
+
+            vPos = vPos + verticalSeparation * (factors(index).linkedItems.Count + 1)
+
             pd.Refresh()
         Next index
     End Sub
@@ -162,9 +175,15 @@ Public Class PatternMatrixBuilder
         amosEngine.Dispose()
     End Sub
 
+    Private Function inchesToPoints(inches As Double)
+        Return inches * 72
+    End Function
+
+    Private Function pointsToInches(points As Double)
+        Return points / 72
+    End Function
+
     Private Sub CreateObservedVars()
-        Dim originalVerticalSeparation As Double = pageHeight / items.Count
-        Dim verticalSeparation = originalVerticalSeparation * 0.65
         Dim horizontalPosition As Double = pageWidth * 0.25
 
         ' Loop through each factor
@@ -183,6 +202,7 @@ Public Class PatternMatrixBuilder
                 Dim observedElement = pd.DiagramDrawObserved(horizontalPosition,
                                                          verticalPosition, 0.7, 0.5)
                 observedElement.NameOrCaption = currentFactor.linkedItems(itemIndex).Name
+                observedElement.NameFontSize = fontSize
                 currentFactor.linkedItems(itemIndex).pdElement = observedElement
 
                 pd.DiagramDrawUniqueVariable(observedElement)
@@ -195,6 +215,7 @@ Public Class PatternMatrixBuilder
                 End If
             Next
         Next
+        pd.Refresh()
     End Sub
 
     Private Function IsFactorRow(checkRow As Array)
@@ -226,9 +247,9 @@ Public Class PatternMatrixBuilder
         For Each element In pd.PDElements
             If element.IsUniqueVariable Then
                 element.originX = pageWidth * 0.1
-                element.Width = 25
-                element.Height = 25
-                element.NameFontSize = 10
+                element.Width = fontSize * 1.75
+                element.Height = fontSize * 1.75
+                element.NameFontSize = fontSize
                 element.NameOrCaption = uniquePrefix & uniqueCounter
                 uniqueCounter += 1
             End If
