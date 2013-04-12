@@ -53,12 +53,12 @@ Public Class PatternMatrixBuilder
         Return "Pattern Matrix Model Builder"
     End Function
 
-    Private Sub PatternMatrixBuilder_Closed(ByVal sender As Object,
+    Private Sub PatternMatrixBuilder_Closed(ByVal sender As Object, _
                                             ByVal e As System.EventArgs) Handles MyBase.FormClosed
         Me.Dispose()
     End Sub
 
-    Private Sub CancelButtonControl_Click(sender As Object,
+    Private Sub CancelButtonControl_Click(sender As Object, _
                                           e As EventArgs) Handles CancelButtonControl.Click
         Me.Close()
     End Sub
@@ -177,7 +177,7 @@ Public Class PatternMatrixBuilder
         ' Draw each variable
         For index As Integer = 0 To factors.Count - 1
             Dim verticalPosition As Double = (verticalSeparation * factors(index).linkedItems.Count) / 2 + vPos
-            Dim unobservedElement = pd.DiagramDrawUnobserved(horizontalPosition,
+            Dim unobservedElement = pd.DiagramDrawUnobserved(horizontalPosition, _
                                                          verticalPosition, 0.5, 0.7)
             unobservedElement.NameOrCaption = factors(index).Name
             factors(index).pdElement = unobservedElement
@@ -217,7 +217,7 @@ Public Class PatternMatrixBuilder
             ' Set up the positioning for the factors
             Dim currentFactor As Factor = factors(factorIndex)
             Dim factorPosition As Double = currentFactor.pdElement.originY
-            Dim startVerticalPosition = factorPosition - ((currentFactor.linkedItems.Count - 1) *
+            Dim startVerticalPosition = factorPosition - ((currentFactor.linkedItems.Count - 1) * _
                                                           verticalSeparation) / 2
             ' Loop through each item in the current factor
             For itemIndex As Integer = 0 To currentFactor.linkedItems.Count - 1
@@ -288,7 +288,7 @@ Public Class PatternMatrixBuilder
             For innerIndex As Integer = index + 1 To factors.Count - 1
                 Dim linkFactor = factors(innerIndex)
                 pd.DiagramDrawCovariance()
-                pd.DragMouse(currentFactor.pdElement,
+                pd.DragMouse(currentFactor.pdElement, _
                              linkFactor.pdElement.originX, linkFactor.pdElement.originY)
                 pd.DiagramDrawCovariance()
             Next
