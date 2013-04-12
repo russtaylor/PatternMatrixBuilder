@@ -150,7 +150,6 @@ Public Class PatternMatrixBuilder
             CreateObservedVars()
 
             resizeObserved()
-            moveUniqueVariables()
             drawCovariances()
             touchUpAll()
 
@@ -211,6 +210,7 @@ Public Class PatternMatrixBuilder
 
     Private Sub CreateObservedVars()
         Dim horizontalPosition As Double = pageWidth * 0.25
+        Dim errorCounter As Integer = 1
 
         ' Loop through each factor
         For factorIndex As Integer = 0 To factors.Count - 1
@@ -231,7 +231,15 @@ Public Class PatternMatrixBuilder
                 observedElement.NameFontSize = fontSize
                 currentFactor.linkedItems(itemIndex).pdElement = observedElement
 
-                pd.DiagramDrawUniqueVariable(observedElement)
+                Dim errorElement As PDElement = pd.DiagramDrawUnobserved(pageWidth * 0.1, _
+                                                                         verticalPosition, _
+                                                                         fontSize * 1.75, _
+                                                                         fontSize * 1.75)
+                Dim errorPath = pd.DiagramDrawPath(errorElement, observedElement)
+                errorPath.Value1 = 1
+                errorElement.NameFontSize = fontSize
+                errorElement.NameOrCaption = "e" & errorCounter
+                errorCounter = errorCounter + 1
 
                 ' Add the path.
                 Dim path = pd.DiagramDrawPath(currentFactor.pdElement, observedElement)
@@ -263,22 +271,6 @@ Public Class PatternMatrixBuilder
         Dim element As PDElement
         For Each element In pd.PDElements
             pd.EditTouchUp(element)
-        Next
-    End Sub
-
-    Private Sub moveUniqueVariables()
-        Dim element As PDElement
-        Dim uniquePrefix As String = "e"
-        Dim uniqueCounter As Integer = 1
-        For Each element In pd.PDElements
-            If element.IsUniqueVariable Then
-                element.originX = pageWidth * 0.1
-                element.Width = fontSize * 1.75
-                element.Height = fontSize * 1.75
-                element.NameFontSize = fontSize
-                element.NameOrCaption = uniquePrefix & uniqueCounter
-                uniqueCounter += 1
-            End If
         Next
     End Sub
 
