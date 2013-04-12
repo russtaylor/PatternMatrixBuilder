@@ -2,6 +2,7 @@
 Imports Microsoft.VisualBasic.FileIO.TextFieldParser
 Imports System.Text.RegularExpressions
 Imports PatternMatrixBuilder.Factor
+Imports MiscAmosTypes
 
 Public Class PatternMatrixBuilder
     Implements AmosGraphics.IPlugin
@@ -36,6 +37,11 @@ Public Class PatternMatrixBuilder
     End Function
 
     Public Function MainSub() As Integer Implements IPlugin.MainSub
+        While DataFileIsEmpty() = True
+            MsgBox("Please specify a data file to continue.")
+            pd.FileDataFiles()
+        End While
+
         Me.Show()
         Me.MatrixInput.Focus()
         Return 1
@@ -54,6 +60,21 @@ Public Class PatternMatrixBuilder
                                           e As EventArgs) Handles CancelButtonControl.Click
         Me.Close()
     End Sub
+
+    Private Function DataFileIsEmpty()
+        Dim dbFormat As cDatabaseFormat
+        Dim fileName As String = ""
+        Dim tableName As String = ""
+        Dim groupingVariable As String = ""
+        Dim groupingValue As Object = vbNull
+        pd.GetDataFile(1, dbFormat, fileName, tableName, groupingVariable, groupingValue)
+
+        If IsNullOrWhiteSpace(fileName) Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 
     Private Function IsNullOrWhiteSpace(inputString As String)
         If String.IsNullOrEmpty(inputString) Then
