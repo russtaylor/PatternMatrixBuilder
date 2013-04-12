@@ -38,7 +38,9 @@ Public Class PatternMatrixBuilder
 
     Public Function MainSub() As Integer Implements IPlugin.MainSub
         While DataFileIsEmpty() = True
-            MsgBox("Please specify a data file to continue.")
+            If MsgBox("Please specify a data file to continue.", MsgBoxStyle.OkCancel) = 2 Then
+                Return 0
+            End If
             pd.FileDataFiles()
         End While
 
