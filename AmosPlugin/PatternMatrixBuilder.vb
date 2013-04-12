@@ -26,9 +26,8 @@ Public Class PatternMatrixBuilder
         Me.ProcessButton.Enabled = False
         Me.CancelButtonControl.Enabled = False
         Me.MatrixInput.Enabled = False
-        Me.InputFilePath.Enabled = False
 
-        Me.ParseData(InputFilePath.Text(), MatrixInput.Text())
+        Me.ParseData(MatrixInput.Text())
         Me.Close()
     End Sub
 
@@ -38,7 +37,7 @@ Public Class PatternMatrixBuilder
 
     Public Function MainSub() As Integer Implements IPlugin.MainSub
         Me.Show()
-        Me.InputFilePath.Focus()
+        Me.MatrixInput.Focus()
         Return 1
     End Function
 
@@ -68,7 +67,7 @@ Public Class PatternMatrixBuilder
         Return False
     End Function
 
-    Private Sub ParseData(inputPath As String, matrixInput As String)
+    Private Sub ParseData(matrixInput As String)
         ' It's necessary to encapsulate the inputData into a StringReader so that the 
         ' TextFieldParser will recognize it.
         Using textParser As New Microsoft.VisualBasic.FileIO.TextFieldParser(New System.IO.StringReader(matrixInput))
@@ -132,8 +131,16 @@ Public Class PatternMatrixBuilder
             drawCovariances()
             touchUpAll()
 
-            linkData(inputPath)
+            linkData()
         End Using
+    End Sub
+
+    Private Sub ClearCanvas()
+        Dim element As PDElement
+        For Each element In pd.PDElements
+            pd.EditSelectAll()
+            pd.ModelDelete()
+        Next
     End Sub
 
     Private Sub CreateUnobservedVarsFromFactors()
@@ -162,12 +169,8 @@ Public Class PatternMatrixBuilder
         Next index
     End Sub
 
-    Private Sub linkData(inputPath As String)
+    Private Sub linkData()
         Dim amosEngine As New AmosEngineLib.AmosEngine
-
-        If Not (IsNullOrWhiteSpace(inputPath)) Then
-            pd.SetDataFile(1, MiscAmosTypes.cDatabaseFormat.mmSPSS, inputPath, "", "", 0)
-        End If
 
         pd.SpecifyModel(amosEngine)
 
