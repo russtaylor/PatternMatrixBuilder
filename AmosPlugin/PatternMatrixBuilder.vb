@@ -93,7 +93,8 @@ Public Class PatternMatrixBuilder
     Private Sub ParseData(matrixInput As String)
         ' It's necessary to encapsulate the inputData into a StringReader so that the 
         ' TextFieldParser will recognize it.
-        Using textParser As New Microsoft.VisualBasic.FileIO.TextFieldParser(New System.IO.StringReader(matrixInput))
+        Using textParser As New Microsoft.VisualBasic.FileIO.TextFieldParser(New System.IO. _
+                                                                     StringReader(matrixInput))
             textParser.TextFieldType = FileIO.FieldType.Delimited
             textParser.SetDelimiters(vbTab)
 
@@ -175,13 +176,14 @@ Public Class PatternMatrixBuilder
 
         ' Draw each variable
         For index As Integer = 0 To factors.Count - 1
-            Dim verticalPosition As Double = (verticalSeparation * factors(index).linkedItems.Count) / 2 + vPos
+            Dim verticalPosition As Double = (verticalSeparation * factors(index). _
+                                              linkedItems.Count) / 2 + vPos
             Dim unobservedElement = pd.DiagramDrawUnobserved(horizontalPosition, _
                                                          verticalPosition, 0.5, 0.7)
             unobservedElement.NameOrCaption = factors(index).Name
             factors(index).pdElement = unobservedElement
-            unobservedElement.Width = 72
-            unobservedElement.Height = 45
+            unobservedElement.Width = fontSize * 3
+            unobservedElement.Height = fontSize * 2
 
             unobservedElement.NameFontSize = fontSize
 
@@ -225,7 +227,7 @@ Public Class PatternMatrixBuilder
                 Dim verticalPosition = startVerticalPosition + (itemIndex * verticalSeparation)
 
                 ' Create the element
-                Dim observedElement = pd.DiagramDrawObserved(horizontalPosition,
+                Dim observedElement = pd.DiagramDrawObserved(horizontalPosition, _
                                                          verticalPosition, 0.7, 0.5)
                 observedElement.NameOrCaption = currentFactor.linkedItems(itemIndex).Name
                 observedElement.NameFontSize = fontSize
