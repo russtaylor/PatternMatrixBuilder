@@ -44,7 +44,7 @@ Public Class PatternMatrixBuilder
             pd.FileDataFiles()
         End While
 
-        Me.Show()
+        Me.ShowDialog()
         Me.MatrixInput.Focus()
         Return 1
     End Function
