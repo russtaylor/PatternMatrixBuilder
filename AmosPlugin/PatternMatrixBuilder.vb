@@ -182,8 +182,8 @@ Public Class PatternMatrixBuilder
                                                          verticalPosition, 0.5, 0.7)
             unobservedElement.NameOrCaption = factors(index).Name
             factors(index).pdElement = unobservedElement
-            unobservedElement.Width = fontSize * 3
-            unobservedElement.Height = fontSize * 2
+            unobservedElement.Width = fontSize * 4.5
+            unobservedElement.Height = fontSize * 3
 
             unobservedElement.NameFontSize = fontSize
 
@@ -228,15 +228,18 @@ Public Class PatternMatrixBuilder
 
                 ' Create the element
                 Dim observedElement = pd.DiagramDrawObserved(horizontalPosition, _
-                                                         verticalPosition, 0.7, 0.5)
+                                                         verticalPosition, 0.2, 0.1)
+                observedElement.Height = fontSize
+                
                 observedElement.NameOrCaption = currentFactor.linkedItems(itemIndex).Name
                 observedElement.NameFontSize = fontSize
                 currentFactor.linkedItems(itemIndex).pdElement = observedElement
 
-                Dim errorElement As PDElement = pd.DiagramDrawUnobserved(pageWidth * 0.1, _
-                                                                         verticalPosition, _
-                                                                         fontSize * 1.75, _
-                                                                         fontSize * 1.75)
+                Dim errorElement As PDElement = pd.DiagramDrawUnobserved( _
+                                                        pageWidth * 0.1, _
+                                                        verticalPosition, _
+                                                        fontSize * 1.75, _
+                                                        fontSize * 1.75)
                 Dim errorPath = pd.DiagramDrawPath(errorElement, observedElement)
                 errorPath.Value1 = 1
                 errorElement.NameFontSize = fontSize
