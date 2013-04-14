@@ -213,6 +213,7 @@ Public Class PatternMatrixBuilder
     Private Sub CreateObservedVars()
         Dim horizontalPosition As Double = pageWidth * 0.25
         Dim errorCounter As Integer = 1
+        Dim errorhPos As Double = pageWidth * (0.1 + ((1 - ((fontSize * 6) / 100)) * 0.1))
 
         ' Loop through each factor
         For factorIndex As Integer = 0 To factors.Count - 1
@@ -230,13 +231,15 @@ Public Class PatternMatrixBuilder
                 Dim observedElement = pd.DiagramDrawObserved(horizontalPosition, _
                                                          verticalPosition, 0.2, 0.1)
                 observedElement.Height = fontSize
+                observedElement.Width = fontSize * 4
                 
                 observedElement.NameOrCaption = currentFactor.linkedItems(itemIndex).Name
                 observedElement.NameFontSize = fontSize
                 currentFactor.linkedItems(itemIndex).pdElement = observedElement
 
+
                 Dim errorElement As PDElement = pd.DiagramDrawUnobserved( _
-                                                        pageWidth * 0.1, _
+                                                        errorhPos, _
                                                         verticalPosition, _
                                                         fontSize * 1.75, _
                                                         fontSize * 1.75)
