@@ -169,6 +169,10 @@ Public Class PatternMatrixBuilder
     Private Sub CreateUnobservedVarsFromFactors()
         verticalSeparation = (pageHeight - 72) / (items.Count + factors.Count - 1)
         fontSize = verticalSeparation / 2
+        If fontSize > 20 Then
+            fontSize = 20
+        End If
+
         Dim horizontalPosition As Double = pageWidth * 0.5
 
         ' Start the spacing half an inch below the top of the page
