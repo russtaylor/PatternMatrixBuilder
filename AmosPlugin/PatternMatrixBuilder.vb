@@ -13,6 +13,7 @@ Public Class PatternMatrixBuilder
     Private Property pageHeight As Double = pd.PageHeight
     Private Property verticalSeparation As Double
     Private Property fontSize As Double
+    Private Property estimatesChecked As Boolean
 
     Private Sub ProcessButton_Click(sender As Object, e As EventArgs) Handles ProcessButton.Click
         If IsNullOrWhiteSpace(Me.MatrixInput.Text()) Then
@@ -86,7 +87,17 @@ Public Class PatternMatrixBuilder
         Return False
     End Function
 
+    Private Sub CheckMeansAndIntercepts()
+        estimatesChecked = pd.GetCheckBox("AnalysisPropertiesForm", "MeansInterceptsCheck").Checked
+        pd.GetCheckBox("AnalysisPropertiesForm", "MeansInterceptsCheck").Checked = True
+    End Sub
+
+    Private Sub ResetMeansAndIntercepts()
+        pd.GetCheckBox("AnalysisPropertiesForm", "MeansInterceptsCheck").Checked = estimatesChecked
+    End Sub
+
     Private Sub ParseData(matrixInput As String)
+        CheckMeansAndIntercepts()
         ' It's necessary to encapsulate the inputData into a StringReader so that the 
         ' TextFieldParser will recognize it.
         Using textParser As New Microsoft.VisualBasic.FileIO.TextFieldParser(New System.IO. _
@@ -153,6 +164,7 @@ Public Class PatternMatrixBuilder
             touchUpAll()
 
             linkData()
+            ResetMeansAndIntercepts()
             pd.EditSelect()
         End Using
     End Sub
