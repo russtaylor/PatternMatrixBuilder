@@ -147,6 +147,8 @@ Public Class PatternMatrixBuilder
                 End Try
             End While
 
+            ClearCanvas()
+
             CreateUnobservedVarsFromFactors()
             CreateObservedVars()
 
@@ -159,11 +161,9 @@ Public Class PatternMatrixBuilder
     End Sub
 
     Private Sub ClearCanvas()
-        Dim element As PDElement
-        For Each element In pd.PDElements
-            pd.EditSelectAll()
-            pd.ModelDelete()
-        Next
+        While pd.PDElements.Count > 0
+            pd.EditErase(pd.PDElements(1))
+        End While
     End Sub
 
     Private Sub CreateUnobservedVarsFromFactors()
