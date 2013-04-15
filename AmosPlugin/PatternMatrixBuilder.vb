@@ -153,6 +153,7 @@ Public Class PatternMatrixBuilder
             touchUpAll()
 
             linkData()
+            pd.EditSelect()
         End Using
     End Sub
 

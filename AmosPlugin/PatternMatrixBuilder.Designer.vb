@@ -35,11 +35,11 @@ Partial Class PatternMatrixBuilder
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.MatrixInput.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MatrixInput.Location = New System.Drawing.Point(15, 27)
+        Me.MatrixInput.Location = New System.Drawing.Point(15, 28)
         Me.MatrixInput.Multiline = True
         Me.MatrixInput.Name = "MatrixInput"
         Me.MatrixInput.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.MatrixInput.Size = New System.Drawing.Size(770, 475)
+        Me.MatrixInput.Size = New System.Drawing.Size(770, 474)
         Me.MatrixInput.TabIndex = 0
         '
         'ProcessButton
