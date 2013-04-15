@@ -14,10 +14,6 @@ Public Class PatternMatrixBuilder
     Private Property verticalSeparation As Double
     Private Property fontSize As Double
 
-    Private Sub InputDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
     Private Sub ProcessButton_Click(sender As Object, e As EventArgs) Handles ProcessButton.Click
         If IsNullOrWhiteSpace(Me.MatrixInput.Text()) Then
             MsgBox("Please paste your matrix into the box.")

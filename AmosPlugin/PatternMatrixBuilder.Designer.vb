@@ -26,6 +26,7 @@ Partial Class PatternMatrixBuilder
         Me.ProcessButton = New System.Windows.Forms.Button()
         Me.CancelButtonControl = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'MatrixInput
@@ -34,18 +35,18 @@ Partial Class PatternMatrixBuilder
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.MatrixInput.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MatrixInput.Location = New System.Drawing.Point(13, 27)
+        Me.MatrixInput.Location = New System.Drawing.Point(15, 27)
         Me.MatrixInput.Multiline = True
         Me.MatrixInput.Name = "MatrixInput"
         Me.MatrixInput.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.MatrixInput.Size = New System.Drawing.Size(744, 500)
+        Me.MatrixInput.Size = New System.Drawing.Size(770, 475)
         Me.MatrixInput.TabIndex = 0
         '
         'ProcessButton
         '
         Me.ProcessButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ProcessButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ProcessButton.Location = New System.Drawing.Point(639, 533)
+        Me.ProcessButton.Location = New System.Drawing.Point(665, 508)
         Me.ProcessButton.Name = "ProcessButton"
         Me.ProcessButton.Size = New System.Drawing.Size(118, 23)
         Me.ProcessButton.TabIndex = 1
@@ -57,7 +58,7 @@ Partial Class PatternMatrixBuilder
         Me.CancelButtonControl.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CancelButtonControl.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.CancelButtonControl.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CancelButtonControl.Location = New System.Drawing.Point(558, 533)
+        Me.CancelButtonControl.Location = New System.Drawing.Point(584, 508)
         Me.CancelButtonControl.Name = "CancelButtonControl"
         Me.CancelButtonControl.Size = New System.Drawing.Size(75, 23)
         Me.CancelButtonControl.TabIndex = 2
@@ -67,12 +68,24 @@ Partial Class PatternMatrixBuilder
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(12, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(387, 15)
+        Me.Label1.Size = New System.Drawing.Size(419, 16)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Paste the copied data from your SPSS pattern matrix in the box below."
+        '
+        'Label2
+        '
+        Me.Label2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(12, 508)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(566, 41)
+        Me.Label2.TabIndex = 4
+        Me.Label2.Text = "Note: Creating the diagram will clear your canvas. Large models can take several " & _
+    "minutes to generate."
         '
         'PatternMatrixBuilder
         '
@@ -80,8 +93,9 @@ Partial Class PatternMatrixBuilder
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.CancelButtonControl
-        Me.ClientSize = New System.Drawing.Size(769, 568)
+        Me.ClientSize = New System.Drawing.Size(795, 558)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.CancelButtonControl)
         Me.Controls.Add(Me.ProcessButton)
@@ -99,4 +113,5 @@ Partial Class PatternMatrixBuilder
     Friend WithEvents ProcessButton As System.Windows.Forms.Button
     Friend WithEvents CancelButtonControl As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
 End Class
