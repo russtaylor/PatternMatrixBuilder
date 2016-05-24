@@ -1,5 +1,5 @@
 ﻿Imports Microsoft.VisualBasic
-Imports AmosGraphics
+Imports Amos
 
 Public Class Factor
     Property Name As String

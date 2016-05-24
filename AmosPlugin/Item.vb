@@ -1,5 +1,5 @@
 ﻿Imports Microsoft.VisualBasic
-Imports AmosGraphics
+Imports Amos
 
 Public Class Item
     Property Name As String

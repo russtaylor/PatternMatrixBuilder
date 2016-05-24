@@ -10,7 +10,7 @@
     <AssemblyName>PatternMatrixBuilder</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -20,17 +20,22 @@
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>PatternMatrixBuilder.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>42353,42354,42355</NoWarn>
     <PlatformTarget>x86</PlatformTarget>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <DefineDebug>false</DefineDebug>
+    <DebugType>Full</DebugType>
+    <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\AppData\Local\AmosDevelopment\Amos\24\Plugins\</OutputPath>
     <DocumentationFile>PatternMatrixBuilder.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>42353,42354,42355</NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <BaseAddress>285212672</BaseAddress>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>Win32 = True</DefineConstants>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -39,25 +44,23 @@
     <OptionCompare>Binary</OptionCompare>
   </PropertyGroup>
   <PropertyGroup>
-    <OptionStrict>Off</OptionStrict>
+    <OptionStrict>On</OptionStrict>
   </PropertyGroup>
   <PropertyGroup>
-    <OptionInfer>On</OptionInfer>
+    <OptionInfer>Off</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AmosEngineLib, Version=2.2.4583.17921, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\IBM\SPSS\Amos\20\AmosEngineLib.dll</HintPath>
+    <Reference Include="Amos">
+      <HintPath>..\..\..\..\..\Program Files (x86)\IBM\SPSS\Amos\24\Amos.dll</HintPath>
     </Reference>
-    <Reference Include="AmosGraphics, Version=4.4.4583.17929, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\IBM\SPSS\Amos\20\AmosGraphics.dll</HintPath>
+    <Reference Include="Amos.EngineLib">
+      <HintPath>..\..\..\..\..\Program Files (x86)\IBM\SPSS\Amos\24\Amos.EngineLib.dll</HintPath>
     </Reference>
-    <Reference Include="MiscAmosTypes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\IBM\SPSS\Amos\20\MiscAmosTypes.dll</HintPath>
+    <Reference Include="Amos.MiscTypes">
+      <HintPath>..\..\..\..\..\Program Files (x86)\IBM\SPSS\Amos\24\Amos.MiscTypes.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -108,6 +111,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
